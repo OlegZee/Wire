@@ -64,7 +64,8 @@ namespace Wire.SerializerFactories
         {
             var arraySerializer = new ObjectSerializer(type);
 
-            var elementType = type.GetGenericArguments()[0];
+			var elementType = type.GetTypeInfo().GenericTypeParameters[0];
+			// var elementType = type.GetGenericArguments()[0];
             var elementSerializer = serializer.GetSerializerByType(elementType);
             var preserveObjectReferences = serializer.Options.PreserveObjectReferences;
 
